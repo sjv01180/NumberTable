@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NumberTable</string>
+    <string name="label_range">Range: </string>
+    <string name="label_to"> to </string>
+    <string name="label_column">Column: </string>
+    <string name="label_n">n</string>
+    <string name="label_nsquared">n&#178;</string>
+    <string name="label_ncubed">n&#179;</string>
+    <string name="label_nroot">&#8730; n</string>
+    <string name="label_nfactorial">n!</string>
+    <string name="button_label_submit">SUBMIT</string>
+    <string name="placeholder_min">MIN</string>
+    <string name="placeholder_max">MAX</string>
+</resources>
