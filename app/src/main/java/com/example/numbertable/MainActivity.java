@@ -3,7 +3,10 @@ package com.example.numbertable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TableLayout;
@@ -11,9 +14,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.InputMismatchException;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +22,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    private void addListener() {
+        EditText.OnEditorActionListener listener = new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionID, KeyEvent e) {
+                if(actionID == EditorInfo.IME_ACTION_NEXT) {
+                    TextView nextField = (TextView)v.focusSearch(View.FOCUS_RIGHT);
+                    nextField.requestFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    return true;
+                }
+                if(actionID == EditorInfo.IME_ACTION_PREVIOUS) {
+                    TextView nextField = (TextView)v.focusSearch(View.FOCUS_LEFT);
+                    nextField.requestFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    return true;
+                }
+                return false;
+            }
+        };
+        EditText min = findViewById(R.id.input_min);
+        min.setOnEditorActionListener(listener);
     }
 
     public void buildTable(View view) {

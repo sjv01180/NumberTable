@@ -23,6 +23,8 @@
             android:id="@+id/input_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="number"
+            android:imeOptions="actionNext"
             android:hint="@string/placeholder_min"
             android:textSize="@dimen/display_font" />
 
@@ -36,6 +38,8 @@
             android:id="@+id/input_max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="number"
+            android:imeOptions="actionPrevious"
             android:hint="@string/placeholder_max"
             android:textSize="@dimen/display_font" />
 
@@ -58,7 +62,7 @@
             android:textSize="@dimen/label_font"/>
 
         <Space
-            android:layout_width="@dimen/space_width"
+            android:layout_width="45sp"
             android:layout_height="wrap_content"/>
 
         <TextView
